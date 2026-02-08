@@ -37,7 +37,7 @@ export const CustomModal = ({
       />
 
       <div
-        className={`relative w-full ${maxWidth} bg-white rounded-4xl shadow-[0_30px_60px_rgba(0,0,0,0.12)] overflow-hidden animate-in zoom-in-95 fade-in duration-300`}
+        className={`relative w-full ${maxWidth} bg-white rounded-xl shadow-[0_30px_60px_rgba(0,0,0,0.12)] overflow-hidden animate-in zoom-in-95 fade-in duration-300`}
       >
         <header className="px-8 pt-8 pb-4 flex items-center justify-between">
           <h2 className="text-2xl font-black text-gray-900 tracking-tight">
