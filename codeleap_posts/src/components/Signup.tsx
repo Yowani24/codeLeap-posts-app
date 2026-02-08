@@ -30,7 +30,7 @@ export function Signup({ onSubmit }: SignupProps) {
           </div>
           <h1 className="text-2xl font-black text-gray-900 tracking-tight leading-tight">
             Welcome to
-            <span className="text-[#7695EC]">CodeLeap network!</span>
+            <span className="text-[#7695EC]"> CodeLeap network!</span>
           </h1>
           <p className="text-gray-400 font-medium">
             Connect with developers around the world.

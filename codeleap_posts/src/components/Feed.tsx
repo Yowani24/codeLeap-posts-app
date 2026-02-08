@@ -1,7 +1,8 @@
 import { MdLogout } from "react-icons/md";
 import { PostCard } from "./posts/PostCard";
 import { PostForm } from "./posts/PostForm";
-import { postsData } from "../service/data/user";
+import { usePosts } from "../service/data/posts/queryData";
+import { PostCardSkeleton } from "./posts/PostCardSkeleton";
 
 interface FeedProps {
   username: string;
@@ -9,6 +10,8 @@ interface FeedProps {
 }
 
 export default function Feed({ username, logoutFn }: FeedProps) {
+  const { data: posts, isLoading } = usePosts();
+
   return (
     <div className="bg-[#DDDDDD] min-h-screen flex justify-center px-2 sm:px-4">
       <div className="w-full max-w-3xl lg:max-w-4xl bg-white space-y-4 sm:space-y-6">
@@ -35,15 +38,19 @@ export default function Feed({ username, logoutFn }: FeedProps) {
         </header>
 
         <div className="flex flex-col gap-4 px-3 sm:px-6 pb-6">
-          <PostForm />
+          <PostForm username={username} />
 
-          {postsData.map((data) => (
-            <PostCard
-              key={data.id}
-              data={data}
-              currentloggedInUser={username}
-            />
-          ))}
+          {isLoading
+            ? Array.from({ length: 3 }).map((_, i) => (
+                <PostCardSkeleton key={i} />
+              ))
+            : posts?.map((data) => (
+                <PostCard
+                  key={data.id}
+                  data={data}
+                  currentloggedInUser={username}
+                />
+              ))}
         </div>
       </div>
     </div>
